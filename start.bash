@@ -11,8 +11,11 @@ unset HS_ED25519_SECRET_KEY_BASE64;
 
 trap 'kill $(jobs -p)' EXIT
 
-chmod 777 /nix/store/nki9ywqzbvz68vr75kn2r7g1q84f5agy-python3-3.9.6/lib/python3.9/site-packages/
-chmod 777 /nix/store/nki9ywqzbvz68vr75kn2r7g1q84f5agy-python3-3.9.6/bin/
+# e.g. /nix/store/nki9ywqzbvz68vr75kn2r7g1q84f5agy-python3-3.9.6
+python3_root=$(dirname $(dirname $(which python3)))
+
+chmod 777 $python3_root/lib/python3.9/site-packages/
+chmod 777 $python3_root/bin/
 pip3 install -r requirements.txt
 
 whoogle-search --host=0.0.0.0 &

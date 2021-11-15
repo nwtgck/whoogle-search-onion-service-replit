@@ -14,8 +14,8 @@ trap 'kill $(jobs -p)' EXIT
 # e.g. /nix/store/nki9ywqzbvz68vr75kn2r7g1q84f5agy-python3-3.9.6
 python3_root=$(dirname $(dirname $(which python3)))
 
-chmod 777 $python3_root/lib/python3.9/site-packages/
-chmod 777 $python3_root/bin/
+chmod +w $python3_root/lib/python3.9/site-packages/
+chmod +w $python3_root/bin/
 pip3 install -r requirements.txt
 
 whoogle-search --host=0.0.0.0 &
